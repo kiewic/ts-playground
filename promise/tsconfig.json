@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "ES6", // needed to use native promises
+        "outDir": "./build/"
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
