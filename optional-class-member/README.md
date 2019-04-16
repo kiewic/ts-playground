@@ -1,4 +1,4 @@
-# Constructor with optional class memeber
+# Constructor with optional class member
 
 Generate corresponding .d.ts file:
 
