@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "amd",
+        "declaration": true, /* Generates corresponding '.d.ts' file. */
+        "outDir": "./build/"
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
