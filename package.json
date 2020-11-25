@@ -1,0 +1,27 @@
+{
+  "name": "ts-playground",
+  "version": "1.0.0",
+  "description": "Start watch:",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiewic/ts-playground.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiewic/ts-playground/issues"
+  },
+  "homepage": "https://github.com/kiewic/ts-playground#readme",
+  "dependencies": {
+    "@angular/core": "^11.0.2",
+    "@types/jasmine": "^3.6.2"
+  }
+}
