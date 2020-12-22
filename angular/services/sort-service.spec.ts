@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
+//
+// Task 2
+//
 describe('SortService', () => {
 
 });
@@ -25,13 +28,13 @@ describe('SortService', () => {
 
     it('Ascending', () => {
         const sortService = TestBed.inject(SortService);
-        orderServiceMock.getCurrentOrder.and.returnValue(OrderOption.Ascending);
+        orderServiceMock.getOrder.and.returnValue(OrderOption.Ascending);
         expect(sortService.sort([1, 3, 2])).toEqual([1, 2, 3]);
     })
 
-    it('Ascending', () => {
+    it('Descending', () => {
         const sortService = TestBed.inject(SortService);
-        orderServiceMock.getCurrentOrder.and.returnValue(OrderOption.Descending);
+        orderServiceMock.getOrder.and.returnValue(OrderOption.Descending);
         expect(sortService.sort([1, 3, 2])).toEqual([3, 2, 1]);
     })
 });

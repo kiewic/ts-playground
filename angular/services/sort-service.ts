@@ -1,5 +1,5 @@
 //
-// Step 1
+// Task 1
 //
 export enum OrderOption {
     Ascending,
@@ -11,13 +11,13 @@ export interface ISortService {
 }
 
 //
-// Step 2
+// Task expected output
 //
 import { Injectable } from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
-    public getCurrentOrder(): OrderOption {
+    public getOrder(): OrderOption {
         // ...
         return;
     }
@@ -29,8 +29,8 @@ export class SortService {
     }
 
     sort(numbers: number[]): number[] {
-        const order = this.order.getCurrentOrder();
-        // ...
+        const order = this.order.getOrder();
+        numbers.sort().reverse();
         return numbers;
     }
 }
