@@ -1,0 +1,10 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "target": "ES5", // needed to use native promises
+        "outDir": "./build/"
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
