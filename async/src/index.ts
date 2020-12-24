@@ -42,7 +42,7 @@ class FooPromise<T> {
       if (this.status === Status.Resolved) {
         _onFulfilled(this.value);
       }
-      else if(this.status === Status.Rejected) {
+      else if (this.status === Status.Rejected) {
         _onRejected(this.value);
       }
       else {
@@ -59,25 +59,21 @@ class FooPromise<T> {
     if (this.status !== Status.Pending) {
       return;
     }
-    this.status = Status.Resolved;
-    this.value = value;
-    for (const { onFulfilled } of this.chained) {
-      onFulfilled(value);
-    }
 
-    // if (isPromise(value)) {
-    //   let then = value.then;
-    //   then.call(
-    //     value,
-    //     (value: T) => this.resolveInternal(value),
-    //     (reason: any) => this.rejectInternal(reason));
-    // }
-    // else {
-    //   this.status = Status.Resolved;
-    //   this.value = value;
-    //   // TODO: schedule process queue
-    //   console.error('oops');
-    // }
+    if (isPromise(value)) {
+      let then = value.then;
+      then.call(
+        value,
+        (value: T) => this.resolveInternal(value),
+        (reason: any) => this.rejectInternal(reason));
+    }
+    else {
+      this.status = Status.Resolved;
+      this.value = value;
+      for (const { onFulfilled } of this.chained) {
+        onFulfilled(value);
+      }
+    }
   }
 
   private rejectInternal(reason: any): void {
@@ -116,7 +112,7 @@ async function foo(): FooPromise<number> {
 
 async function bar(): FooPromise<number> {
   console.log("Hello bar");
-  let result =  await foo();
+  let result = await foo();
   console.log("Goodbye bar", result);
   return result + 1;
 }

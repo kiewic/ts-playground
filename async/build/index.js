@@ -70,28 +70,22 @@ var FooPromise = /** @class */ (function () {
         });
     };
     FooPromise.prototype.resolveInternal = function (value) {
+        var _this = this;
         if (this.status !== 0 /* Pending */) {
             return;
         }
-        this.status = 1 /* Resolved */;
-        this.value = value;
-        for (var _i = 0, _a = this.chained; _i < _a.length; _i++) {
-            var onFulfilled = _a[_i].onFulfilled;
-            onFulfilled(value);
+        if (isPromise(value)) {
+            var then = value.then;
+            then.call(value, function (value) { return _this.resolveInternal(value); }, function (reason) { return _this.rejectInternal(reason); });
         }
-        // if (isPromise(value)) {
-        //   let then = value.then;
-        //   then.call(
-        //     value,
-        //     (value: T) => this.resolveInternal(value),
-        //     (reason: any) => this.rejectInternal(reason));
-        // }
-        // else {
-        //   this.status = Status.Resolved;
-        //   this.value = value;
-        //   // TODO: schedule process queue
-        //   console.error('oops');
-        // }
+        else {
+            this.status = 1 /* Resolved */;
+            this.value = value;
+            for (var _i = 0, _a = this.chained; _i < _a.length; _i++) {
+                var onFulfilled = _a[_i].onFulfilled;
+                onFulfilled(value);
+            }
+        }
     };
     FooPromise.prototype.rejectInternal = function (reason) {
         if (this.status !== 0 /* Pending */) {
