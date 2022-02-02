@@ -1,22 +1,26 @@
-let done = false;
-const isItDoneYet = new Promise((resolve, reject) => {
+namespace example1 {
+  let done = false
+
+  const isItDoneYet = new Promise((resolve, reject) => {
     if (done) {
-        const workDone = 'Here is the thing I built';
-        resolve(workDone);
+      const workDone = 'Here is the thing I built'
+      resolve(workDone)
+    } else {
+      const why = 'Still working on something else'
+      reject(why)
     }
-    else {
-        const why = 'Still working on something else';
-        reject(why);
-    }
-});
-isItDoneYet
+  });
+
+  isItDoneYet
     .then(x => console.log('fulfilled 1 called', x), x => (console.log('rejected 1 called', x), Promise.reject('two')))
     .then(x => console.log('fulfilled 2 called', x), x => console.log('rejected 2 called', x))
     .then(x => console.log('fulfilled 3 called', x), x => console.log('rejected 3 called', x))
-    .catch(x => console.log('then 1 called', x))
+    .catch(x => console.log('catch 1 called', x))
     .then(x => console.log('fulfilled 4 called', x), x => console.log('rejected 4 called', x))
     .then(x => console.log('fulfilled 5 called', x), x => console.log('rejected 5 called', x))
-    .finally(() => console.log('finally 1 called'));
+    .finally(() => console.log('finally 1 called'))
+}
+
 /*
 
 Conclusions
