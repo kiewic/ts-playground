@@ -1,3 +1,6 @@
+//
+// Task 4
+//
 import { Component } from '@angular/core';
 
 @Component({ templateUrl: './list.component.html' })

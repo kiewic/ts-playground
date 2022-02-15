@@ -6,8 +6,12 @@ export enum OrderOption {
     Descending,
 }
 
+export interface IOrderService {
+    getOrder(): OrderOption;
+}
+
 export interface ISortService {
-    sort(numbers: number[], order: OrderOption): number[];
+    sort(numbers: number[], orderService: IOrderService): number[];
 }
 
 //
@@ -15,7 +19,7 @@ export interface ISortService {
 //
 import { Injectable } from "@angular/core";
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class OrderService {
     public getOrder(): OrderOption {
         // ...
