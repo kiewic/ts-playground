@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/kiewic/ts-playground#readme",
   "dependencies": {
-    "@angular/core": "^11.0.2",
+    "@angular/core": "^11.0.5",
     "@types/jasmine": "^3.6.2"
   }
 }
