@@ -1,0 +1,39 @@
+<html>
+
+<body>
+    <div id="a">
+        <div id="aa">
+            <div id="aaa">
+                Hello!
+            </div>
+        </div>
+        <div id="ab">
+            <div id="aba">
+                World!
+            </div>
+        </div>
+    </div>
+    <script>
+        function isParent(a, b) {
+            let current = b;
+            while (current) {
+                if (current === a) {
+                    return true;
+                }
+                // HTMLElement inherits from Element
+                // Element inherits from Node
+                // Node inherits from EventTarget
+                current = current.parentNode;
+            }
+            return false;
+        }
+        console.log('a  - a  ', isParent(document.querySelector('#a'), document.querySelector('#a'))); // true
+        console.log('a  - aaa', isParent(document.querySelector('#a'), document.querySelector('#aaa'))); // true
+        console.log('aa - aaa', isParent(document.querySelector('#aa'), document.querySelector('#aaa'))); // true
+        console.log('aa - ab ', isParent(document.querySelector('#aa'), document.querySelector('#ab'))); // false
+        console.log('aa - aba', isParent(document.querySelector('#aa'), document.querySelector('#aba'))); // false
+        console.log('ab - aba', isParent(document.querySelector('#ab'), document.querySelector('#aba'))); // true
+    </script>
+</body>
+
+</html>
