@@ -1,16 +1,21 @@
 //
 // Task 4
+// list.component.ts
 //
 import { Component } from '@angular/core';
 
 @Component({ templateUrl: './list.component.html' })
 export class ListComponent {
-    items: string[] = ['foo', 'bar', 'baz'];
-    filteredItems: string[];
+    items: string[];
 
     protected performFilter(filter: string): void {
-        this.filteredItems = this.items.filter(
-            (item: string) => item.indexOf(filter) !== -1);
+        this.items = this.queryItems().filter(
+            (item: string) => item.indexOf(filter) !== -1
+        );
+    }
+
+    protected queryItems(): string[] {
+        return ['foo', 'bar', 'baz'];
     }
 }
 
